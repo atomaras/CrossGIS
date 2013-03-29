@@ -3,7 +3,7 @@ CrossGIS
 
 DevSummit 2013 (CrossGIS) Cross Platform MVVM Application Source
 
-<img src="Screenshots/Screen1.jpg"/>
+<img src="Screenshots/Screen1.jpg" height="800" width="480"/>
 <img src="Screenshots/Screen2.jpg"/>
 <img src="Screenshots/Screen3.jpg"/>
 <img src="Screenshots/Screen4.jpg"/>
