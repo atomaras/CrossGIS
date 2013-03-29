@@ -1,0 +1,17 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:esriSymbols="clr-namespace:ESRI.ArcGIS.Client.Symbols;assembly=ESRI.ArcGIS.Client">
+
+    <esriSymbols:PictureMarkerSymbol x:Key="SearchSymbol"
+                                     OffsetX="17"
+                                     OffsetY="50">
+        <esriSymbols:PictureMarkerSymbol.ControlTemplate>
+            <ControlTemplate>
+                <Image Source="/Assets/redpin.png"
+                       Width="55"
+                       Height="55" />
+            </ControlTemplate>
+        </esriSymbols:PictureMarkerSymbol.ControlTemplate>
+    </esriSymbols:PictureMarkerSymbol>
+</ResourceDictionary>

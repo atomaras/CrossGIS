@@ -1,0 +1,96 @@
+﻿<core:WindowView x:Class="CrossGIS.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:core="clr-namespace:CrossGIS.WPF.Core"
+        Title="CrossGIS" Height="350" Width="525"
+        DataContext="{Binding MainViewModel, Source={StaticResource vmLocator}}"
+                 Background="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="MapArea">
+            <ContentControl x:Name="MapControl"
+                            Background="White"
+                            Content="{Binding MapViewModel.Map, Source={StaticResource vmLocator}}"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch" />
+
+            <Button Width="30"
+                    Height="30"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Margin="0,0,10,50"
+                    Command="{Binding ToggleGpsCommand}">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border CornerRadius="5"
+                                BorderBrush="Gray"
+                                BorderThickness="2">
+                            <Border CornerRadius="5"
+                                    BorderBrush="Gray"
+                                    BorderThickness="2"
+                                    Background="Black">
+                                <Border.OpacityMask>
+                                    <ImageBrush>
+                                        <ImageBrush.ImageSource>
+                                            <BitmapImage UriSource="{Binding GpsViewModel.State, Converter={StaticResource cvGpsIcon}, FallbackValue=/Assets/current-location.png}"/>
+                                        </ImageBrush.ImageSource>
+                                    </ImageBrush>
+                                </Border.OpacityMask>
+                            </Border>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <StackPanel x:Name="LoadingPanel"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        Visibility="{Binding IsLoading, Converter={StaticResource cvBoolean}}">
+                <TextBlock Text="Loading..."
+                           HorizontalAlignment="Center" />
+                <ProgressBar IsIndeterminate="True"
+                             HorizontalAlignment="Stretch" />
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="SearchArea"
+              Width="300"
+              Grid.Column="1"
+              DataContext="{Binding PlaceSearchViewModel, Source={StaticResource vmLocator}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ProgressBar IsIndeterminate="True"
+                         Visibility="{Binding IsSearching, Converter={StaticResource cvBoolean}}" />
+            <TextBox Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Grid.Row="1"
+                     Margin="10"
+                     IsEnabled="{Binding IsSearching, Converter={StaticResource cvBooleanOpposite}}">
+                <TextBox.InputBindings>
+                    <KeyBinding Command="{Binding SearchCommand}"
+                                Key="Enter" />
+                </TextBox.InputBindings>
+
+            </TextBox>
+            <ListBox ItemsSource="{Binding SearchResults}"
+                     Grid.Row="2">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Button Command="{Binding GoToCommand}"
+                                Width="250"
+                                CommandParameter="{Binding}"
+                                Content="{Binding}"
+                                Background="Transparent"
+                                ContentTemplate="{StaticResource PlaceSearchResultTemplate}"
+                                HorizontalContentAlignment="Stretch" 
+                                HorizontalAlignment="Stretch"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </Grid>
+</core:WindowView>

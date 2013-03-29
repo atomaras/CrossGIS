@@ -1,0 +1,242 @@
+﻿<controls:PhoneApplicationPageView
+    x:Class="CrossGIS.WP8.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:cimbalino="clr-namespace:Cimbalino.Phone.Toolkit.Behaviors;assembly=Cimbalino.Phone.Toolkit"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:controls="clr-namespace:CrossGIS.Core.Controls"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform.WP8"
+    xmlns:models="clr-namespace:CrossGIS.Core.Models"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:triggers2="clr-namespace:CrossGIS.Core.Triggers"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    DataContext="{Binding MainViewModel, Source={StaticResource vmLocator}}"
+    x:Name="MainPageControl">
+
+    <controls:PhoneApplicationPageView.Resources>
+        <ContentControl x:Key="ResultsChangedBindingRelay" IsEnabled="{Binding PlaceSearch.HasSearchResults}"
+                        IsEnabledChanged="OnHasSearchResultsChanged"/>
+    </controls:PhoneApplicationPageView.Resources>
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator Text="Searching..." 
+                                 IsIndeterminate="True"
+                                 IsVisible="{Binding PlaceSearch.IsSearching, FallbackValue=False}"/>
+    </shell:SystemTray.ProgressIndicator>
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ResultsExpansionStates"
+                              CurrentStateChanged="OnVisualStateChanged">
+                <VisualState x:Name="Hidden">
+                    <Storyboard Duration="0:0:0.2"
+                                BeginTime="0">
+                        <DoubleAnimation Storyboard.TargetName="MapControlTranslate"
+                                         Storyboard.TargetProperty="Y"
+                                         To="0">
+                            <DoubleAnimation.EasingFunction>
+                                <BackEase Amplitude="0.3"
+                                          EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="SearchPanelTranslate"
+                                         Storyboard.TargetProperty="Y"
+                                         To="550" Duration="0">
+                        </DoubleAnimation>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SearchTextBoxPanel"
+                                                       Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Collapsed">
+                    <Storyboard Duration="0:0:0.5"
+                                BeginTime="0">
+                        <DoubleAnimation Storyboard.TargetName="SearchPanelTranslate"
+                                         Storyboard.TargetProperty="Y"
+                                         To="360">
+                            <DoubleAnimation.EasingFunction>
+                                <BackEase Amplitude="0.3"
+                                          EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SearchTextBoxPanel"
+                                                       Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Expanded">
+                    <Storyboard Duration="0:0:0.5">
+                        <DoubleAnimation Storyboard.TargetName="MapControlTranslate"
+                                         Storyboard.TargetProperty="Y"
+                                         To="-250">
+                            <DoubleAnimation.EasingFunction>
+                                <BackEase Amplitude="0.3"
+                                          EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="SearchPanelTranslate"
+                                         Storyboard.TargetProperty="Y"
+                                         To="0">
+                            <DoubleAnimation.EasingFunction>
+                                <BackEase Amplitude="0.3"
+                                          EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SearchTextBoxPanel"
+                                                       Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel"
+                    Grid.Row="0"
+                    Margin="12,0,0,0">
+            <TextBlock Text="CROSSGIS"
+                       Style="{StaticResource PhoneTextNormalStyle}"
+                       Margin="12,0" />
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel"
+              Grid.Row="1"
+              Margin="12,0,12,0">
+            <ContentControl x:Name="MapControl"
+                            Content="{Binding MapViewModel.Map, Source={StaticResource vmLocator}}"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch">
+                <UIElement.RenderTransform>
+                    <TranslateTransform x:Name="MapControlTranslate" />
+                </UIElement.RenderTransform>
+            </ContentControl>
+
+            <Grid x:Name="SearchTextBoxPanel"
+                  Background="{StaticResource PhoneChromeBrush}"
+                  VerticalAlignment="Top">
+                <toolkit:PhoneTextBox DataContext="{Binding PlaceSearchViewModel, Source={StaticResource vmLocator}}"
+                                      Text="{Binding SearchText, Mode=TwoWay}"
+                                      x:Name="SearchTextBox"
+                                      Hint="Enter address or place"
+                                      ActionIcon="/Assets/microphone.png"
+                                      IsEnabled="{Binding IsSearching, Converter={StaticResource cvBooleanOpposite}}"
+                                      Style="{StaticResource PhoneTextBoxActionStyle}"
+                                      GotFocus="SearchTextBox_OnGotFocus"
+                                      LostFocus="SearchTextBox_OnLostFocus">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="ActionIconTapped">
+                            <command:EventToCommand Command="{Binding RecognizeSpeechCommand}" />
+                        </i:EventTrigger>
+                        <triggers2:TextBoxEnterKeyTrigger>
+                            <command:EventToCommand Command="{Binding SearchCommand}" />
+                        </triggers2:TextBoxEnterKeyTrigger>
+                    </i:Interaction.Triggers>
+                </toolkit:PhoneTextBox>
+            </Grid>
+                
+            <StackPanel x:Name="LoadingPanel"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        Visibility="{Binding IsLoading, Converter={StaticResource cvBoolean}}">
+                <TextBlock Text="Loading..."
+                           HorizontalAlignment="Center" />
+                <ProgressBar IsIndeterminate="True"
+                             HorizontalAlignment="Stretch" />
+            </StackPanel>
+
+            <Grid x:Name="SearchPanel"
+                  Background="Transparent"
+                  VerticalAlignment="Bottom"
+                  Height="500"
+                  MinHeight="500"
+                  MaxHeight="500">
+                <Grid.RenderTransform>
+                    <TranslateTransform x:Name="SearchPanelTranslate"
+                                        Y="550" />
+                </Grid.RenderTransform>
+
+                <Grid Background="{StaticResource PhoneBackgroundBrush}"
+                      HorizontalAlignment="Stretch">
+                    <phone:LongListSelector Margin="0,36,0,0"
+                                            HorizontalAlignment="Stretch"
+                                            ItemsSource="{Binding PlaceSearchViewModel.SearchResults, Source={StaticResource vmLocator}}">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <Button d:DataContext="{d:DesignInstance Type=models:PlaceSearchResult}"
+                                        Style="{StaticResource ButtonIgnorePressedStateStyle}"
+                                        toolkit:TiltEffect.IsTiltEnabled="True"
+										HorizontalAlignment="Stretch"
+                                        HorizontalContentAlignment="Stretch">
+                                    <ContentControl Content="{Binding}"
+                                                    ContentTemplate="{StaticResource PlaceSearchResultTemplate}"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    HorizontalContentAlignment="Stretch"
+                                                    VerticalContentAlignment="Stretch" />
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <command:EventToCommand Command="{Binding GoToCommand}"
+                                                                    CommandParameter="{Binding}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                </Grid>
+                <Grid x:Name="SearchAccentBar"
+                      Height="50"
+                      Margin="0,-13,0,0"
+                      VerticalAlignment="Top"
+                      MouseLeftButtonUp="OnSearchAccentBarMouseLeftButtonUp"
+                      Background="{StaticResource TransparentBrush}">
+                    <Grid Background="{StaticResource PhoneAccentBrush}"
+                          VerticalAlignment="Center">
+                        <TextBlock Text="RESULTS"
+                                   Foreground="{StaticResource PhoneForegroundBrush}" />
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+    <i:Interaction.Behaviors>
+        <cimbalino:MultiApplicationBarBehavior SelectedIndex="0" x:Name="MainAppBar">
+            <cimbalino:ApplicationBar Opacity="0.5">
+                <cimbalino:ApplicationBarIconButton Text="me"
+                                                    Command="{Binding ToggleGpsCommand}"
+                                                    IconUri="{Binding GpsViewModel.State, Converter={StaticResource cvGpsIcon}, FallbackValue=/Assets/current-location.png}" />
+            </cimbalino:ApplicationBar>
+        </cimbalino:MultiApplicationBarBehavior>
+    </i:Interaction.Behaviors>
+</controls:PhoneApplicationPageView>

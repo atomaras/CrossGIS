@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0429C58E-5C39-46C5-BF57-3C814F3B8A6C}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CrossGIS.WP8</RootNamespace>
+    <AssemblyName>CrossGIS.WP8</AssemblyName>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>CrossGIS.WP8_$(Configuration)_$(Platform).xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>CrossGIS.WP8.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WP8</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\CrossGIS.Core\Bootstrapper.cs">
+      <Link>Core\Bootstrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Controls\PhoneApplicationPageView.cs">
+      <Link>Core\Controls\PhoneApplicationPageView.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Converters\BooleanConverter.cs">
+      <Link>Core\Converters\BooleanConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Converters\GpsStateToIconConverter.cs">
+      <Link>Core\Converters\GpsStateToIconConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Cross.cs">
+      <Link>Core\Cross.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Design\DesignPlaceSeachViewModel.cs">
+      <Link>Core\Design\DesignPlaceSeachViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Models\PlaceSearchResult.cs">
+      <Link>Core\Models\PlaceSearchResult.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Models\Portal.cs">
+      <Link>Core\Models\Portal.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Services\AppXamlResourceProvider.cs">
+      <Link>Core\Services\AppXamlResourceProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Services\IGpsLayerFactory.cs">
+      <Link>Core\Services\IGpsLayerFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Services\ILocatorService.cs">
+      <Link>Core\Services\ILocatorService.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Services\InMemoryStateService.cs">
+      <Link>Core\Services\InMemoryStateService.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Services\IStateService.cs">
+      <Link>Core\Services\IStateService.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Services\IXamlResourceProvider.cs">
+      <Link>Core\Services\IXamlResourceProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Services\LocatorService.cs">
+      <Link>Core\Services\LocatorService.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Services\PhoneStateService.cs">
+      <Link>Core\Services\PhoneStateService.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Triggers\TextBoxEnterKeyTrigger.cs">
+      <Link>Core\Triggers\TextBoxEnterKeyTrigger.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Utils\Constants.cs">
+      <Link>Core\Utils\Constants.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Utils\Extensions.cs">
+      <Link>Core\Utils\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Utils\IMapGestureHandler.cs">
+      <Link>Core\Utils\IMapGestureHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Utils\ManifestAppInfo.cs">
+      <Link>Core\Utils\ManifestAppInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\ViewModels\GpsLayerViewModel.cs">
+      <Link>Core\ViewModels\GpsLayerViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\ViewModels\GraphicsLayerViewModel.cs">
+      <Link>Core\ViewModels\GraphicsLayerViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\ViewModels\IViewAware.cs">
+      <Link>Core\ViewModels\IViewAware.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\ViewModels\IViewModelLocator.cs">
+      <Link>Core\ViewModels\IViewModelLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\ViewModels\LayerViewModel.cs">
+      <Link>Core\ViewModels\LayerViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\ViewModels\MainViewModel.cs">
+      <Link>Core\ViewModels\MainViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\ViewModels\MapViewModel.cs">
+      <Link>Core\ViewModels\MapViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\ViewModels\PlaceSearchViewModel.cs">
+      <Link>Core\ViewModels\PlaceSearchViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\ViewModels\ViewModelLocator.cs">
+      <Link>Core\ViewModels\ViewModelLocator.cs</Link>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Content Include="..\CrossGIS.Core\Assets\microphone.png">
+      <Link>Assets\microphone.png</Link>
+    </Content>
+    <Content Include="Core\Resources\Styles.xaml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Core\Resources\Symbols.xaml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Core\Resources\Templates.xaml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\CrossGIS.Core\Assets\current-location-notrack.png">
+      <Link>Assets\current-location-notrack.png</Link>
+    </Content>
+    <Content Include="..\CrossGIS.Core\Assets\current-location-track.png">
+      <Link>Assets\current-location-track.png</Link>
+    </Content>
+    <Content Include="..\CrossGIS.Core\Assets\current-location.png">
+      <Link>Assets\current-location.png</Link>
+    </Content>
+    <Content Include="..\CrossGIS.Core\Assets\redpin.png">
+      <Link>Assets\redpin.png</Link>
+    </Content>
+    <Content Include="Assets\AlignmentGrid.png" />
+    <Content Include="Assets\ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileMedium.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileSmall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\IconicTileMediumLarge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\IconicTileSmall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="README_FIRST.txt" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CrossGIS.Portable\CrossGIS.Portable.csproj">
+      <Project>{DB76A8B2-CC16-427E-8A40-8707F194D053}</Project>
+      <Name>CrossGIS.Portable</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Cimbalino.Phone.Toolkit">
+      <HintPath>..\packages\Cimbalino.Phone.Toolkit.2.1\lib\wp8\Cimbalino.Phone.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Cimbalino.Phone.Toolkit.Controls">
+      <HintPath>..\packages\Cimbalino.Phone.Toolkit.Controls.2.1\lib\wp8\Cimbalino.Phone.Toolkit.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client, Version=10.1.1.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
+    <Reference Include="ESRI.ArcGIS.Client.Portal, Version=10.1.1.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
+    <Reference Include="ESRI.ArcGIS.Client.Toolkit, Version=10.1.1.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
+    <Reference Include="ESRI.ArcGIS.Client.Toolkit.DataSources, Version=10.1.1.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
+    <Reference Include="GalaSoft.MvvmLight">
+      <HintPath>..\packages\Portable.MvvmLightLibs.4.1.27.1\lib\wp8\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras">
+      <HintPath>..\packages\Portable.MvvmLightLibs.4.1.27.1\lib\wp8\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform.WP8">
+      <HintPath>..\packages\Portable.MvvmLightLibs.4.1.27.1\lib\wp8\GalaSoft.MvvmLight.Platform.WP8.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=3.9.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unofficial.Blend.Interactivity.1.0.0\lib\wp8\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Controls, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cimbalino.Phone.Toolkit.Controls.2.1\lib\wp8\Microsoft.Phone.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Controls.Toolkit">
+      <HintPath>..\packages\SilverlightToolkitWP.4.2012.10.9\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\Portable.CommonServiceLocator.1.2.2\lib\portable-net4+sl4+wp7+win8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=3.9.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unofficial.Blend.Interactivity.1.0.0\lib\wp8\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+</Project>

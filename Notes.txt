@@ -1,0 +1,4 @@
+NuGet MvvmLight
+NuGet Bcl.Async for CrossGIS.Core in WP7.1 in order to use async/await
+NuGet Cimbalino
+Attribution/Licencing!

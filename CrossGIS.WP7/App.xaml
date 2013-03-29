@@ -1,0 +1,29 @@
+﻿<Application xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+             xmlns:converters="clr-namespace:CrossGIS.Core.Converters;assembly=CrossGIS.Core"
+             xmlns:viewModels="clr-namespace:CrossGIS.Core.ViewModels;assembly=CrossGIS.Core"
+             x:Class="CrossGIS.WP7.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--Application Resources-->
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Core/Resources/Symbols.xaml" />
+                <ResourceDictionary Source="/Core/Resources/Styles.xaml" />
+                <ResourceDictionary Source="/Core/Resources/Templates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <viewModels:ViewModelLocator x:Key="vmLocator" />
+            <converters:BooleanConverter x:Key="cvBoolean" />
+            <converters:BooleanConverter x:Key="cvBooleanOpposite"
+                                         Opposite="True" />
+            <converters:GpsStateToIconConverter x:Key="cvGpsIcon" />
+        </ResourceDictionary>
+    </Application.Resources>
+    <Application.ApplicationLifetimeObjects>
+        <!--Required object that handles lifetime events for the application-->
+        <shell:PhoneApplicationService Launching="Application_Launching"
+                                       Closing="Application_Closing"
+                                       Activated="Application_Activated"
+                                       Deactivated="Application_Deactivated" />
+    </Application.ApplicationLifetimeObjects>
+</Application>
