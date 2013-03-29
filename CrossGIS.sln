@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3E6067B7-EDF7-4446-B46B-861ED00410A3}"
 	ProjectSection(SolutionItems) = preProject
 		Notes.txt = Notes.txt
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossGIS.Core", "CrossGIS.Core\CrossGIS.Core.csproj", "{5922E117-0926-43CF-A17A-EA9086F4E9FA}"
