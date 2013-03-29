@@ -87,7 +87,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="Cross.cs" />
     <Compile Include="Design\DesignPlaceSeachViewModel.cs" />
     <Compile Include="Services\IGpsLayerFactory.cs" />
     <Compile Include="Triggers\TextBoxEnterKeyTrigger.cs" />
@@ -100,6 +99,7 @@
     <Compile Include="Services\IXamlResourceProvider.cs" />
     <Compile Include="Models\Portal.cs" />
     <Compile Include="Utils\ManifestAppInfo.cs" />
+    <Compile Include="Utils\RefererInjectionWebRequestCreator.cs" />
     <Compile Include="ViewModels\GpsLayerViewModel.cs" />
     <Compile Include="Services\ILocatorService.cs" />
     <Compile Include="Services\InMemoryStateService.cs" />

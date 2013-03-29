@@ -102,9 +102,6 @@
     <Compile Include="..\CrossGIS.Core\Converters\GpsStateToIconConverter.cs">
       <Link>Core\Converters\GpsStateToIconConverter.cs</Link>
     </Compile>
-    <Compile Include="..\CrossGIS.Core\Cross.cs">
-      <Link>Core\Cross.cs</Link>
-    </Compile>
     <Compile Include="..\CrossGIS.Core\Design\DesignPlaceSeachViewModel.cs">
       <Link>Core\Design\DesignPlaceSeachViewModel.cs</Link>
     </Compile>
@@ -152,6 +149,9 @@
     </Compile>
     <Compile Include="..\CrossGIS.Core\Utils\ManifestAppInfo.cs">
       <Link>Core\Utils\ManifestAppInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\CrossGIS.Core\Utils\RefererInjectionWebRequestCreator.cs">
+      <Link>Core\Utils\RefererInjectionWebRequestCreator.cs</Link>
     </Compile>
     <Compile Include="..\CrossGIS.Core\ViewModels\GpsLayerViewModel.cs">
       <Link>Core\ViewModels\GpsLayerViewModel.cs</Link>
