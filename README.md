@@ -35,7 +35,7 @@ to easily share our business logic across platforms.
 
 * [ArcGIS Runtime SDK for Windows Phone Resource Center](http://resources.arcgis.com/en/communities/windows-phone-sdk/index.html)
 * [ArcGIS Runtime SDK for Windows Phone download (requires Esri Global account)](http://www.esri.com/apps/products/download/index.cfm?fuseaction=download.main&downloadid=875)
-* [Cross-Platform Development with the .NET Framework (Portable class libraries] (http://msdn.microsoft.com/en-us/library/gg597391.aspx)
+* [Cross-Platform Development with the .NET Framework (Portable class libraries)] (http://msdn.microsoft.com/en-us/library/gg597391.aspx)
 * [Post describing WP7/WP8 Referer issue in detail] (http://atomaras.wordpress.com/2012/11/18/wp7-app-on-wp8-breaking-changes-part-1-webrequests-referer-changes/)
 * [Building a Complete Cross- Platform MVVM App with MvvmCross] (http://www.geekchamp.com/articles/building-a-complete-cross--platform-mvvm-app-with-mvvmcross)
 
