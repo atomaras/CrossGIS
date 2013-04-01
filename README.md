@@ -25,13 +25,11 @@ to easily share our business logic across platforms.
 
 1. Fork and then clone the repo or download the .zip file. 
 2. Download the [ArcGIS Runtime SDK for Windows Phone (requires Esri Global account)](http://www.esri.com/apps/products/download/index.cfm?fuseaction=download.main&downloadid=875).   
-3. Download and install the [October 2012 version of the Windows Phone Toolkit](http://phone.codeplex.com/) on CodePlex.
-4. In Visual Studio, open the solution ArcGISWindowsPhoneSDK.sln. If necessary, repair the references to the ArcGIS Runtime SDK for Windows Phone assemblies and the Windows Phone Toolkit. 
+3. Copy the WP SDK dlls under the Libs/WP7 folder
+4. Download the [ArcGIS Runtime SDK for WPF](http://resources.arcgis.com/en/communities/runtime-wpf/).
+5. Copy the WPF SDK dlls under the Libs/WPF folder
+6. In Visual Studio, open the solution CrossGIS.sln. If necessary, repair the references to the ArcGIS Runtime SDKs. 
 5. Clean and build the solution, then run the application. 
-
-## Requirements
-
-* [Supported system configurations](http://resources.arcgis.com/en/help/windows-phone-sdk/concepts/index.html#//011v00000025000000)
 
 ## Resources
 
@@ -50,7 +48,7 @@ Find a bug or want to request a new feature?  Please let us know by submitting a
 Anyone and everyone is welcome to contribute. 
 
 ## Licensing
-Copyright 2012 Esri
+Copyright 2013 Esri
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
